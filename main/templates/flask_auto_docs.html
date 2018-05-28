@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentation</title>
+</head>
+<body>
+    <h1>Documentation</h1>
+
+    {% for e in endpoints %}
+        <div>{{ e['url'] }}</div>
+        <div>{{ e['methods'] }}</div>
+        <div>{{ e['description'] }}</div>
+        <div>{{ e['params'] }}</div>
+        <div>{{ e['return'] }}</div>
+    {% endfor %}
+<br/><br/><br/>
+    {% for e in endpoints %}
+        <table>
+            <tr><td colspan="2">
+                <h2>{{ e['url'] }}</h2>
+                <span>{% for m in e['methods'] %} {{ m }}, {% endfor %}</span>
+
+            </td></tr>
+            <tr><td>params</td><td>
+                {% if e['params'] %}
+                    <table>
+                    {% for n, v in e['params'].items() %}
+                        <tr><td>{{ n }}</td><td>{{ v }}</td></tr>
+                    {% endfor %}
+                    </table>
+                {% endif %}
+            </td></tr>
+            <tr><td>description</td><td><pre>{{ e['description'] }}</pre></td></tr>
+            <tr><td>return</td><td><pre>{{ e['return']|escape }}</pre></td></tr>
+        </table>
+    {% endfor %}
+
+</body>
+</html>

@@ -1,5 +1,7 @@
 import re
 
+from flask import render_template
+
 
 class FlaskAutoDoc:
 
@@ -61,3 +63,5 @@ class FlaskAutoDoc:
         data = {m.group('p_name'): m.group('p_descr') for m in cls.RE_GET_API_PARAMS.finditer(docstring)}
         return data
 
+    def html(self):
+        return render_template('flask_auto_docs.html', endpoints=[self.get(name) for name in self._data])
