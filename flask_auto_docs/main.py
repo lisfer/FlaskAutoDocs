@@ -7,9 +7,9 @@ from flask import render_template
 class FlaskAutoDocs:
 
     RE_GET_RETURN = re.compile(r'(?<=:return:)\s*(.*)', re.DOTALL)
-    RE_GET_DESCRIPTION = re.compile(r'\s+(?P<data>.+?)?\s+(?=:params|:api_param|:return|$)', re.DOTALL)
+    RE_GET_DESCRIPTION = re.compile(r'\s+(?P<data>.+?)?\s+(?=:param|:api_param|:return|$)', re.DOTALL)
     RE_GET_API_PARAMS = re.compile(
-        r'(?<=:api_param) ((?P<p_name>.+?): (?P<p_descr>.+?))\s+(?=:params|:api_param|:return|$)', re.DOTALL)
+        r'(?<=:api_param) ((?P<p_name>.+?): (?P<p_descr>.+?))\s+(?=:param|:api_param|:return|$)', re.DOTALL)
 
     def __init__(self, flask_app):
         self._data = dict()
@@ -23,7 +23,7 @@ class FlaskAutoDocs:
 
     @classmethod
     def default_description(self):
-        return {'description': '', 'url':'', 'methods': set(), 'return': '', 'params': dict()}
+        return {'description': '', 'url': '', 'methods': set(), 'return': '', 'params': dict()}
 
     def get(self, name):
         f_descr = self.default_description()

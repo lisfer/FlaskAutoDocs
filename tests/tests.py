@@ -15,7 +15,7 @@ def fixture_full(person_id:int):
     it its' cool: it can do amazing stuff
 
     and so on
-    :params person_id: id of the person
+    :param person_id: id of the person
     :api_param name: name of the person to be set
     :api_param age: new age for the person
     :return: true of false
@@ -28,13 +28,13 @@ def fixture_mixing(person_id:int):
     it its' cool: it can do amazing stuff
 
     and so on
-    :params person_id: id of the person
+    :param person_id: id of the person
     :api_param name: name of the person to be set
         api_param row 2
-    :params test1: test
+    :param test1: test
         params row 2
     :api_param age: new age for the person
-    :params test2: test
+    :param test2: test
     :return: true of false
         and many other interesting stuff
     """
