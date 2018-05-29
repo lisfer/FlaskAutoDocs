@@ -41,6 +41,42 @@ def docs():
     return @api_docs.html()
 ```
 
+## Example
+
+```python
+@app.route('/person/<int:person_id>')
+@app.api_doc.doc
+def get_person(person_id):
+    """
+    Gives information about person specified by it's id
+    :param person_id: identificator
+        of the person which should be received
+    :return: string with all available information
+    """
+    return f'{person_id} person'
+
+
+@app.route('/person/<int:person_id>', methods=['POST'])
+@app.api_doc.doc
+def set_person(person_id):
+    """
+    Updated information about person specified by it's id
+
+    :param person_id: identificator
+        of the person which should be received
+    :api_param name: a string with new name which should be set for the person
+    :api_param age: an integer value with
+        new age which should be set for the person
+
+    :return: string with all available information
+    """
+    name = request.form.get('name')
+    age = request.form.get('age')
+    return f"""
+        {person_id} person. New name: {name}, new age: {age}
+    """
+```
+
 that will gave us next result:
 ![docs](docs/screen.png)
 
