@@ -3,7 +3,7 @@ from os.path import join, dirname
 
 setup(
     name='FlaskAutoDocs',
-    version='0.2.0',
+    version='0.3.0',
     packages=find_packages(),
     description='Documentation generator for flask',
     long_description=open(join(dirname(__file__), 'README.md')).read(),
