@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <title>Documentation</title>
 </head>
+<style>
+    table.doc_table td:first-child{
+        font-weight: bold;
+        vertical-align: top;
+    }
+    table.doc_table td {
+        border: 1px solid #ccc;
+        padding: 3px 5px;
+    }
+</style>
 <body>
     <h1>Documentation</h1>
 
     {% for e in endpoints %}
-        <div>{{ e['url'] }}</div>
-        <div>{{ e['methods'] }}</div>
-        <div>{{ e['description'] }}</div>
-        <div>{{ e['params'] }}</div>
-        <div>{{ e['return'] }}</div>
-    {% endfor %}
-<br/><br/><br/>
-    {% for e in endpoints %}
-        <table>
+        <table class="doc_table">
             <tr><td colspan="2">
                 <h2>{{ e['url'] }}</h2>
-                <span>{% for m in e['methods'] %} {{ m }}, {% endfor %}</span>
-
             </td></tr>
-            <tr><td>params</td><td>
+            <tr><td>Methods:</td><td>{% for m in e['methods'] %} {{ m }}, {% endfor %}</td></tr>
+            <tr><td>Params:</td><td>
                 {% if e['params'] %}
                     <table>
                     {% for n, v in e['params'].items() %}
@@ -31,8 +32,8 @@
                     </table>
                 {% endif %}
             </td></tr>
-            <tr><td>description</td><td><pre>{{ e['description'] }}</pre></td></tr>
-            <tr><td>return</td><td><pre>{{ e['return']|escape }}</pre></td></tr>
+            <tr><td>Description:</td><td><pre>{{ e['description'] }}</pre></td></tr>
+            <tr><td>Return:</td><td><pre>{{ e['return']|escape }}</pre></td></tr>
         </table>
     {% endfor %}
 
