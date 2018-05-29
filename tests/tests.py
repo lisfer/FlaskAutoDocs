@@ -1,7 +1,7 @@
 import unittest
 
-from flask import Flask, jsonify
-from main import FlaskAutoDoc
+from flask import Flask
+from flask_auto_docs import FlaskAutoDocs
 
 
 
@@ -44,7 +44,7 @@ class FlaskAutoDocTest(unittest.TestCase):
 
     def setUp(self):
         app = Flask(__name__)
-        self.fad = FlaskAutoDoc(app)
+        self.fad = FlaskAutoDocs(app)
         app.route('/api')(self.fad.doc(fixture_simple))
         app.route('/api/person/<int:person_id>', methods=['POST'])(self.fad.doc(fixture_full))
         app.route('/api/person/<int:person_id>', methods=['POST'])(self.fad.doc(fixture_mixing))

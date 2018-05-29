@@ -1,0 +1,2 @@
+include README.md
+include flask_auto_docs/templates/flask_auto_docs.html

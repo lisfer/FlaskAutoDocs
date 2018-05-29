@@ -1,9 +1,10 @@
+import os
 import re
 
 from flask import render_template
 
 
-class FlaskAutoDoc:
+class FlaskAutoDocs:
 
     RE_GET_RETURN = re.compile(r'(?<=:return:)\s*(.*)', re.DOTALL)
     RE_GET_DESCRIPTION = re.compile(r'\s+(?P<data>.+?)?\s+(?=:params|:api_param|:return|$)', re.DOTALL)
@@ -13,6 +14,8 @@ class FlaskAutoDoc:
     def __init__(self, flask_app):
         self._data = dict()
         self.flask_app = flask_app
+        template_path = os.path.join(os.path.dirname(__file__), 'templates')
+        self.flask_app.jinja_loader.searchpath.append(template_path)
 
     def doc(self, func):
         self._data[func.__name__] = func
