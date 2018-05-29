@@ -36,9 +36,9 @@ api_docs = FlaskAutoDocs(app)
 def update_person():
     pass
     
-@app.rout('/docs')
+@app.route('/docs')
 def docs():
-    return @api_docs.html()
+    return api_docs.html()
 ```
 
 ## Example
