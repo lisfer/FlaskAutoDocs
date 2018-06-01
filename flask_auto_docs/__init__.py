@@ -1,1 +1,1 @@
-from .main import FlaskAutoDocs
+from .flask_auto_docs import FlaskAutoDocs
