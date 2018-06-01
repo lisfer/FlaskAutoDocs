@@ -6,7 +6,7 @@ from flask import render_template
 
 class FlaskAutoDocs:
 
-    RE_GET_RETURN = re.compile(r'(?<=:return:)\s*(.*)', re.DOTALL)
+    RE_GET_RETURN = re.compile(r'(?<=:return:)\s+?\n?(.*)', re.DOTALL)
     RE_GET_DESCRIPTION = re.compile(r'\s+(?P<data>.+?)?\s+(?=:param|:api_param|:return|$)', re.DOTALL)
     RE_GET_API_PARAMS = re.compile(
         r'(?<=:api_param) ((?P<p_name>.+?): (?P<p_descr>.+?))\s+(?=:param|:api_param|:return|$)', re.DOTALL)
@@ -59,7 +59,7 @@ class FlaskAutoDocs:
 
     @classmethod
     def _get_return(cls, docstring):
-        return (cls.RE_GET_RETURN.findall(docstring)[0] or '').strip()
+        return (cls.RE_GET_RETURN.findall(docstring)[0] or '').rstrip()
 
     @classmethod
     def _get_params(cls, docstring):
